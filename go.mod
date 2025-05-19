@@ -1,4 +1,4 @@
-module github.com/x-t4m-cx/cd
+module github.com/x-t4m-cx/common-grpc-auth
 
 go 1.23.6
 
