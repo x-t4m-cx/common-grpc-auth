@@ -11,7 +11,14 @@ import (
 	"google.golang.org/grpc/status"
 	"net/http"
 )
-
+type GRPCClientInterface interface {
+    Login(ctx context.Context, username, password string) (*http.Response, error)
+    Logout(ctx context.Context) (*http.Response, error)
+    Register(ctx context.Context, username, password string) (*http.Response, error)
+    Refresh(ctx context.Context, refreshToken string) (*http.Response, error)
+    VerifyToken(ctx context.Context, token string) (string, error)
+    Close() error
+}
 type GRPCClient struct {
 	client gen.AuthServiceClient
 	conn   *grpc.ClientConn
